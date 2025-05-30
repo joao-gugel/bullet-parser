@@ -1,8 +1,10 @@
+import { Tokenizer } from "../src/tokenizer";
 import { Parser } from "../src/parser";
 
-const parser = new Parser();
+const tokenizer = new Tokenizer();
+const parser = new Parser(tokenizer);
 
-const program = "10";
+const program = `"hello"`;
 
 const ast = parser.parse(program);
 

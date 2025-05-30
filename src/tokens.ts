@@ -1,5 +1,4 @@
-const Tokens = {
-    NumericLiteral: "NumericLiteral",
+export const Tokens = {
+    NUMBER: "NUMBER",
+    STRING: "STRING",
 };
-
-export { Tokens };
