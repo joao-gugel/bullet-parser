@@ -23,35 +23,28 @@ class Tokenizer {
         /**
          * Numbers
          */
-        if (!Number.isNaN(+expression[0])) {
-            let number = "";
 
-            while (!Number.isNaN(+expression[this._cursor])) {
-                number += expression[this._cursor];
-                this._cursor++;
-            }
+        let matched = /^\d+/.exec(expression);
 
+        if (matched) {
+            this._cursor += matched[0].length;
             return {
                 type: Tokens.NUMBER,
-                value: number,
+                value: matched[0],
             };
         }
 
         /**
          * Strings
          */
-        if (expression[0] === '"') {
-            let s: string[] = [];
 
-            do {
-                s.push(expression[this._cursor++]);
-            } while (expression[this._cursor] !== '"' && !this.isEndOfFile());
+        matched = /^"[^"]*"/.exec(expression);
 
-            this._cursor++;
-
+        if (matched) {
+            this._cursor += matched[0].length;
             return {
                 type: Tokens.STRING,
-                value: s.join(""),
+                value: matched[0],
             };
         }
 

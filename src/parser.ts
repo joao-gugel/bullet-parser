@@ -84,7 +84,7 @@ class Parser {
 
         return {
             type: NodeType.StringLiteral,
-            value: token.value.slice(1),
+            value: token.value.slice(1, -1),
         };
     }
 }
